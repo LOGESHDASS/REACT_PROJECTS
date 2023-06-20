@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .door img {
+            width: 200px;
+            height: 400px;
+        }
+
+        .door {
+            display: flex;
+        }
+
+
+        .door .left {
+            transform-origin: left center;
+
+        }
+
+        .door .right {
+            transform-origin: right center;
+
+        }
+
+        .door.open .left {
+            animation: leftopen 5s 1;
+            animation-fill-mode: forwards;
+
+
+
+        }
+
+        .door.open .right {
+            animation: rightopen 5s 1;
+            animation-fill-mode: forwards;
+
+
+        }
+
+        .door.close .left {
+            animation: leftclose 5s 1;
+            animation-fill-mode: forwards;
+
+
+
+        }
+
+        .door.close .right {
+            animation: rightclose 5s 1;
+            animation-fill-mode: forwards;
+
+
+        }
+
+
+
+        @keyframes leftopen {
+            0% {
+                transform: perspective(400px) rotateY(0deg);
+            }
+
+            100% {
+                transform: perspective(400px) rotateY(70deg);
+
+            }
+        }
+
+        @keyframes rightopen {
+            0% {
+                transform: perspective(400px) rotateY(0deg);
+            }
+
+            100% {
+                transform: perspective(400px) rotateY(-70deg);
+
+            }
+        }
+
+
+        @keyframes leftclose {
+            0% {
+                transform: perspective(400px) rotateY(70deg);
+
+            }
+
+            100% {
+                transform: perspective(400px) rotateY(0deg);
+            }
+
+
+        }
+
+        @keyframes rightclose {
+            0% {
+                transform: perspective(400px) rotateY(-70deg);
+
+            }
+
+            100% {
+                transform: perspective(400px) rotateY(0deg);
+            }
+
+
+        }
+
+        button {
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button.openBtn {
+            background-color: rgb(94, 94, 179);
+        }
+
+        button.closeBtn {
+            background-color: rgb(174, 12, 12);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="door">
+        <div class="left">
+            <img src="door.png" alt="">
+        </div>
+        <div class="right">
+            <img src="C:\xampp\htdocs\SAMPLE\react_project\src\Components\door.png" alt="">
+        </div>
+    </div>
+
+    <div class="actions">
+        <button class="openBtn" onclick="openDoor()">Open</button>
+        <button class="closeBtn" onclick="closeDoor()">Close</button>
+    </div>
+
+    <script>
+        let door = document.querySelector('.door')
+
+        function openDoor() {
+            door.classList.add('open');
+            door.classList.remove('close');
+        }
+
+        function closeDoor() {
+            door.classList.add('close');
+            door.classList.remove('open');
+
+        }
+
+    </script>
+
+</body>
+
+</html>
